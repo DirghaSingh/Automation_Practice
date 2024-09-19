@@ -103,7 +103,7 @@
                     <div class="method-list-content failed suite-Surefire_suite">
                       <span>
                         <img src="failed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="runner.RunnerWeb" class="method navigator-link" hash-for-method="runScenario(&quot;User opens the url and clicks on Signup&quot;, &quot;Register&quot;)">runScenario("User opens the url and clicks on Signup", "Register")</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Surefire_suite" title="runner.RunnerWeb" class="method navigator-link" hash-for-method="runScenario(&quot;User opens the homepage&quot;, &quot;Register&quot;)">runScenario("User opens the homepage", "Register")</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content failed suite-Surefire_suite -->
@@ -126,13 +126,29 @@
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="runScenario(&quot;User opens the url and clicks on Signup&quot;, &quot;Register&quot;)">
-                  </a> <!-- runScenario("User opens the url and clicks on Signup", "Register") -->
+                  <a name="runScenario(&quot;User opens the homepage&quot;, &quot;Register&quot;)">
+                  </a> <!-- runScenario("User opens the homepage", "Register") -->
                   <span class="method-name">runScenario</span>
-                  <span class="parameters">("User opens the url and clicks on Signup","Register")</span>
-                  <div class="stack-trace">java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.TakesScreenshot.getScreenshotAs(org.openqa.selenium.OutputType)&quot; because &quot;ts&quot; is null
-	at steps.Hooks.tearDown(Hooks.java:30)
+                  <span class="parameters">("User opens the homepage","Register")</span>
+                  <div class="stack-trace">io.cucumber.testng.UndefinedStepException: The step &apos;User open&apos; is undefined.
+You can implement this step using the snippet(s) below:
 
+@Given(&quot;User open&quot;)
+public void user_open() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+	at io.cucumber.core.runtime.TestCaseResultObserver.assertTestCasePassed(TestCaseResultObserver.java:69)
+	at io.cucumber.testng.TestCaseResultObserver.assertTestCasePassed(TestCaseResultObserver.java:23)
+	at io.cucumber.testng.TestNGCucumberRunner.lambda$runScenario$1(TestNGCucumberRunner.java:133)
+	at io.cucumber.core.runtime.CucumberExecutionContext.lambda$runTestCase$5(CucumberExecutionContext.java:129)
+	at io.cucumber.core.runtime.RethrowingThrowableCollector.executeAndThrow(RethrowingThrowableCollector.java:23)
+	at io.cucumber.core.runtime.CucumberExecutionContext.runTestCase(CucumberExecutionContext.java:129)
+	at io.cucumber.testng.TestNGCucumberRunner.runScenario(TestNGCucumberRunner.java:129)
+	at io.cucumber.testng.AbstractTestNGCucumberTests.runScenario(AbstractTestNGCucumberTests.java:35)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 32 stack frames
 </div> <!-- stack-trace -->
                   <em>
 (Runs Cucumber Scenarios)                  </em>
@@ -203,12 +219,12 @@ data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'runScenario')
 data.setCell(0, 2, 'runner.RunnerWeb')
-data.setCell(0, 3, 5716);
+data.setCell(0, 3, 1911);
 window.suiteTableData['Surefire_suite']= { tableData: data, tableDiv: 'times-div-Surefire_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 5 seconds</span>
+              <span class="suite-total-time">Total running time: 1 seconds</span>
               <div id="times-div-Surefire_suite">
               </div> <!-- times-div-Surefire_suite -->
             </div> <!-- times-div -->
@@ -236,18 +252,18 @@ return data;
             <div class="chronological-class">
               <div class="chronological-class-name">runner.RunnerWeb</div> <!-- chronological-class-name -->
               <div class="configuration-class before">
-                <span class="method-name">setUpClass(org.testng.TestRunner@9b21bd3)</span>
+                <span class="method-name">setUpClass(org.testng.TestRunner@1d23ff23)</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-class before -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
-                <span class="method-name">runScenario("User opens the url and clicks on Signup", "Register")</span>
-                <span class="method-start">593 ms</span>
+                <span class="method-name">runScenario("User opens the homepage", "Register")</span>
+                <span class="method-start">812 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-class after">
                 <span class="method-name">tearDownClass</span>
-                <span class="method-start">6320 ms</span>
+                <span class="method-start">2739 ms</span>
               </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

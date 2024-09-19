@@ -3,3 +3,4 @@ steps\RegisterUser.class
 runner\RunnerWeb.class
 steps\BaseSteps.class
 steps\Hooks.class
+pages\RegisterUserPage.class
