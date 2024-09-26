@@ -8,7 +8,7 @@ import io.cucumber.testng.CucumberOptions;
         features = "classpath:features",
 		glue = "steps",
 		publish = true,
- 		tags = "@runs"
+ 		tags = "@TestCase6"
 		)
 
 public class RunnerWeb extends AbstractTestNGCucumberTests{

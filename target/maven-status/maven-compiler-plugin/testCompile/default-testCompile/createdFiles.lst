@@ -1,6 +1,12 @@
+steps\ContactUsFormSteps.class
 pages\BasePage.class
-steps\RegisterUser.class
+steps\LoginSteps.class
+pages\ContactUsFormPage.class
+helper\Predefined.class
+pages\LoginPage.class
+steps\RegisterUserSteps.class
 runner\RunnerWeb.class
 steps\BaseSteps.class
+helper\dropdowns.class
 steps\Hooks.class
 pages\RegisterUserPage.class

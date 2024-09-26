@@ -12,9 +12,18 @@ import org.openqa.selenium.support.FindBy;
 
 import com.github.javafaker.Faker;
 
+import helper.Predefined;
+import helper.dropdowns;
+
 public class RegisterUserPage extends BasePage
 {
+
+    private static String mail;
     
+    dropdowns drp= new dropdowns();
+    Predefined pre = new Predefined();
+    //RegisterUserPage register= new RegisterUserPage(driver);
+
     public RegisterUserPage(WebDriver rdriver) {
         super(rdriver);
     }
@@ -48,8 +57,8 @@ private WebElement name_loc;
 
 @FindBy(xpath = "//input[@data-qa=\"signup-email\"]")
 private WebElement email_loc;
-public String mail;
-public String firstname;
+
+// public String firstname;
 
 public void enter_details(){
     name_loc.sendKeys("Texting Practice");
@@ -60,9 +69,13 @@ public void enter_details(){
      Faker faker = new Faker();
 
     // Generate a fake name
-    firstname = faker.name().firstName();
-     String mail = firstname + dateFormat.format(cal.getTime()) + "@yopmail.com";
+    String firstname = faker.name().firstName();
+    RegisterUserPage.mail = firstname + dateFormat.format(cal.getTime()) + "@yopmail.com";
      email_loc.sendKeys(mail);
+}
+
+public String getmail(){
+    return RegisterUserPage.mail;
 }
 
 @FindBy(xpath = "//button[@data-qa='signup-button']")
@@ -85,7 +98,138 @@ public void verify_enterdetails(){
 @FindBy(xpath = "//input[@id='id_gender1']")
 private WebElement title_loc;
 
+@FindBy(xpath = "//input[@id=\'password\']")
+private WebElement password_loc;
+
+@FindBy(xpath = "//select[@id='days']")
+private WebElement day_loc;
+
+@FindBy(xpath = "//select[@id='months']")
+private WebElement month_loc;
+
+@FindBy(xpath = "//select[@id='years']")
+private WebElement year_loc;
+
+
 public void fill_details(){
     title_loc.click();
+    password_loc.sendKeys("Leverage@12");
+    drp.selectdropdown(day_loc,"2");
+    drp.selectdropdown(month_loc, "January");
+    drp.selectdropdown(year_loc, "2020");
+
+    pre.scrolldown();
+}
+
+@FindBy(xpath = "//*[@id='newsletter']")
+private WebElement checkbox1;
+
+@FindBy(xpath = "//*[@id='optin']")
+private WebElement checkbox2;
+
+public void check_box(){
+    checkbox1.click();
+    checkbox2.click();
+
+}
+@FindBy(xpath= "//input[@id='first_name']")
+private WebElement firstname_loc;
+@FindBy(xpath= "//input[@id='last_name']")
+private WebElement lastname_loc;
+@FindBy(xpath= "//input[@id='company']")
+private WebElement companyname_loc;
+@FindBy(xpath= "//input[@id='address1']")
+private WebElement address1_loc;
+@FindBy(xpath= "//input[@id='address2']")
+private WebElement address2_loc;
+@FindBy(xpath= "//input[@id='state']")
+private WebElement state_loc;
+@FindBy(xpath= "//input[@id='city']")
+private WebElement city_loc;
+@FindBy(xpath= "//input[@id='zipcode']")
+private WebElement zipcode_loc;
+@FindBy(xpath= "//input[@id='mobile_number']")
+private WebElement mobile_number_loc;
+
+public void address_information(){
+    firstname_loc.sendKeys("Dirgha");
+    lastname_loc.sendKeys("Singh");
+    companyname_loc.sendKeys("LE");
+    address1_loc.sendKeys("Sector 137");
+    address2_loc.sendKeys("Noida");
+    state_loc.sendKeys("UP");
+    city_loc.sendKeys("Noida");
+    zipcode_loc.sendKeys("201305");
+    mobile_number_loc.sendKeys("1638729799");
+}
+
+@FindBy(xpath = "//button[@data-qa='create-account']")
+private WebElement createbutton_loc;
+
+public void create_account(){
+    createbutton_loc.click();
+}
+
+@FindBy(xpath = "//h2[@data-qa='account-created']")
+private WebElement accountcretaed_loc;
+
+public void verify_account_created(){
+    String textcreated = accountcretaed_loc.getText();
+    String actualtext = "ACCOUNT CREATED!";
+    Assert.assertEquals(textcreated, actualtext);
+    System.out.println("Account creation verified");
+}
+
+@FindBy(xpath = "//a[@data-qa='continue-button']")
+private WebElement continue_loc;
+
+public void click_continue(){
+    continue_loc.click();
+}
+
+@FindBy(xpath = "//ul[@class='nav navbar-nav']/li/a/b")
+private WebElement loginname_loc;
+
+public void loginnameuser(){
+    String loginname = loginname_loc.getText();
+    String actualloginname = "Texting Practice";
+    Assert.assertEquals(loginname, actualloginname);
+    System.out.println("Logged in user verified");
+}
+
+@FindBy(xpath = "//i[@class='fa fa-trash-o']")
+private WebElement deleteaccount_loc;
+
+public void deleteaccount(){
+    deleteaccount_loc.click();
+}
+
+@FindBy(xpath = "//h2[@data-qa='account-deleted']")
+private WebElement accountdeleted_loc;
+
+@FindBy(xpath = "//a[@data-qa='continue-button']")
+private WebElement Continubuttondelete_loc;
+
+public void verifydeletedandclickcontinue(){
+    String deletedtext=accountdeleted_loc.getText();
+    String actualdeletedtext = "ACCOUNT DELETED!";
+    Assert.assertEquals(deletedtext, actualdeletedtext);
+    System.out.println("Account deleted");
+    Continubuttondelete_loc.click();
+}
+
+public void alreadypresentemail(){
+    name_loc.sendKeys("Texting Practice");
+    pre.entersendkeys(email_loc,getmail());
+}
+
+@FindBy(xpath= "//form[@action='/signup']/p")
+private WebElement alreadyemail;
+
+public void alreadyemail(){
+    String actualemailmessage = alreadyemail.getText();
+    String expectedemailmessage = "Email Address already exist!";
+    Assert.assertEquals(actualemailmessage, expectedemailmessage);
+    System.out.println(actualemailmessage);
 }
 }
